@@ -1,0 +1,53 @@
+Robot 2
+
+Herramientas
+
+Entrada 1, Entrada 2, Salida1, salida2, salida3, salida 4, salida 5, salida 6, Entrada 3
+Tornillos, clips
+x[], Y[], Z[];
+Si(Entrada 1 = 1) {
+    verifica que la herramienta de atornillado esta lista recive senal de entrada 1;
+
+    mientras(i = 0, i < tornillos, i++) {
+        movimiento a la zona de de atornillado;
+        activa herramienta de atornillado por Salida 1;
+        girar disco de herramientas a la siguinte herramienta;
+        dirigirse a la siguiente zona de atornillado;
+    }
+
+    mientras(i = 0, i < clips, i++) {
+        movimiento a la zona de colocacion de clips;
+        ejecutar movimiento para poner clip, y luego soltar;
+        girar disco de herramient a la siguiente;
+        dirigirse a la siguiente zona dee colocacion de clip;
+    }
+}
+
+Preparar herramienta de agarre por ventosa,
+movimiento del eje de herramienta a las cordenada X[0], Y[0], Z[0];
+movimiento vertical - z mm;
+activacion de las ventosas por las salidas 2, 3, 4;
+5 = 1;
+movimiento vertical - z mm;
+movimiento del eje de herramientas a la posicion X[1], Y[1], Z[1];
+movimiento horizontal x e y mm;
+movimiento vertical - z mm;
+desactivar ventosas por las salidas 2, 3, 4, 5 = 0;
+movimiento vertical z mm;
+movimiento horizontañ - x e - y mm;
+enviar señal de activacion de la soldadura salida 6;
+
+movimiento a la posicion X[2], Y[2], Z[2];
+mientras(i = 0; i < herramientas, i++) {
+    recargar herramienta;
+    girar disco de herramienta;
+}
+movimiento del eje de herramientas a la posicion X[1], Y[1], Z[1];
+movimiento horizontal x e y mm;
+movimiento vertical - z mm;
+activar ventosas por las salidas 2, 3, 4, 5 = 1;
+movimiento vertical z mm;
+movimiento horizontañ - x e - y mm;
+movimiento del eje de herramientas a la posicion X[3], Y[3], Z[3];
+movimiento vertical - z mm;
+desactivar ventosas por las salidas 2, 3, 4, 5 = 0;
