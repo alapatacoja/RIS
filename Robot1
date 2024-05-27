@@ -1,0 +1,75 @@
+Robot 1:
+
+Herramientas
+Entrada1, Entrada2, Entrada3, salida1, Piezas, piezas interiores, piezas exteriores, eje de herramienta
+
+X[piezas], Y[Piezas], Z[Piezas];
+
+Inicio
+
+Poner piezas interna {
+
+    Si(Entrada1 = 1) {
+        mientras(i = 3, i < Piezas interiores, i++) {
+            mover eje de herramienta a la posicion X[0], Y[0], Z[0];
+            mover ejes de herramienta - z mm;
+            Enviar señal de activacion a la herramienta(salida1 = 1);
+            mover eje de herramienta z mm;
+            mover eje de herramienta a posicion X[i], Y[i], Z[i];
+            mover eje de herramienta - z mm;
+            Enviar señal de desactivacion a la herramienta(salida1 = 0);
+            mover eje de herramienta z mm;
+            mover eje de herramienta a posicion X[i + 1], Y[i + 1], Z[i + 1];
+        }
+    }
+    Si("Entrada1 = 0)= ejecutar accion "
+        Poner piezas interna ".
+    }
+
+    Poner pieza base {
+        i = Pieza interna
+        Si(Entrada2 = 1) {
+            mover eje de herramienta a la posicion X[1], Y[1], X[1];
+            mover eje de herramienta - z mm;
+            Enviar señal de activacion a la herramienta(salida1 = 1);
+            mover eje de herramienta z mm;
+            mover eje de herramienta a posicion X[i], Y[i], Z[i];
+            mover eje de herramienta - z mm;
+            Enviar señal de desactivacion a la herramienta(salida1 = 0);
+            mover eje de herramienta z mm;
+            mover eje de herramienta a posicion X[i + 1], Y[i + 1], Z[i + 1];
+        }
+        Si(Entrada2 = 0) ejecutar Poner pieza base;
+    }
+
+    Poner piezas exteriores {
+        Si(Entrada1 = 1) {
+            mientras(i = (Piezas interiores + 2), i < Piezas interiores, i++) {
+                mover eje de herramienta a la posicion X[0], Y[0], Z[0];
+                mover ejes de herramienta - z mm;
+                Enviar señal de activacion a la herramienta(salida1 = 1);
+                mover eje de herramienta z mm;
+                mover eje de herramienta a posicion X[i], Y[i], Z[i];
+                mover eje de herramienta - z mm;
+                Enviar señal de desactivacion a la herramienta(salida1 = 0);
+                mover eje de herramienta z mm;
+                mover eje de herramienta a posicion X[i + 1], Y[i + 1], Z[i + 1];
+            }
+        }
+        Si("Entrada1 = 0)= ejecutar accion "
+            Poner piezas Exteriores ".
+        }
+
+        Trasladadar puerta {
+            i = Pieza exterior
+            mover eje de herramienta a posicion X[i], Y[i], Z[i]
+            mover eje de herramienta a la posicion X[0], Y[0], Z[0];
+            mover ejes de herramienta - z mm;
+            Enviar señal de activacion a la herramienta(salida1 = 1);
+            mover eje de herramienta z mm;
+            mover eje de herramienta a posicion X[i], Y[i], Z[i];
+            mover eje de herramienta - z mm;
+            Enviar señal de desactivacion a la herramienta(salida1 = 0);
+            mover eje de herramienta z mm;
+            mover eje de herramienta a posicion X[i + 1], Y[i + 1], Z[i + 1];
+        }
